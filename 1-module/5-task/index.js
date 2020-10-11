@@ -12,7 +12,7 @@ function truncate(str, maxlength) {
     if (trimmedStr.length <= maxlength) {
       return (trimmedStr.length === 0) ? trimmedStr + partialStr : trimmedStr + ' ' + partialStr
     }
-      return trimmedStr.replace(trimmedStr[19], '…').slice(0, 20)
+      return trimmedStr.replace(trimmedStr[19], '…').slice(0, maxlength)
   }, '')
   
   return result
