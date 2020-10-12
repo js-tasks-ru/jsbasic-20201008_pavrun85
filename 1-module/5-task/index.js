@@ -6,14 +6,7 @@
  */
 function truncate(str, maxlength) {
   // ваш код...
-  let arr = str.split(' ')
-  
-  let result = arr.reduce((trimmedStr, partialStr) => {
-    if (trimmedStr.length <= maxlength) {
-      return (trimmedStr.length === 0) ? trimmedStr + partialStr : trimmedStr + ' ' + partialStr
-    }
-      return trimmedStr.replace(trimmedStr[maxlength - 1], '…').slice(0, maxlength)
-  }, '')
-  
-  return result
+  let arr = str.split('').slice(0, maxlength)
+  let trimmedStr = arr.join('')
+  return trimmedStr.replace(trimmedStr[maxlength - 1], "…")
 }
