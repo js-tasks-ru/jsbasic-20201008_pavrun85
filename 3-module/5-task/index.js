@@ -11,7 +11,7 @@ function getMinMax(str) {
   // C помощью цикла создаю массив из всех чисел в строке
    let numberArr = []
   for (let prop of arrSpace) {
-    if (isFinite(prop)) {
+    if (isFinite(prop) && prop !== '') {
       let number = +prop
       numberArr.push(number)
     }
