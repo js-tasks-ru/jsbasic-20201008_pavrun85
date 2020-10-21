@@ -4,9 +4,7 @@
  */
 function namify(users) {
   // ваш код...
-  let arr = []
-  for (let value of Object.values(users)) {
-    arr.push(value.name)
-  }
-  return arr
+  let arr =  Object.values(users)
+  let arrOfNames = arr.map(value => value.name)
+  return arrOfNames
 }
