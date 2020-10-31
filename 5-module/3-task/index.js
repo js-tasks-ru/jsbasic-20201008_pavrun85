@@ -3,11 +3,12 @@ function initCarousel() {
   let container = document.querySelector('.container')
   let elem = document.querySelector('.carousel__inner')
   let slides = document.querySelectorAll('.carousel__slide')
-  let width = elem.offsetWidth
   let couruselArrowLeft = document.querySelector('.carousel__arrow_left')
   let couruselArrowRight = document.querySelector('.carousel__arrow_right')
   
+  let width = elem.offsetWidth
   let position = 0
+  
   if (position === 0) {
     couruselArrowLeft.style.display = 'none'
   } else {
