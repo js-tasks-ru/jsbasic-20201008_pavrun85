@@ -46,13 +46,13 @@ export default class UserTable {
   }
 
   makeTable() {
-    this.value = this.rows.reduce((string, user) => {
+    let value = this.rows.reduce((string, user) => {
       if (user.length - 1) {
         return string + '<td>' + user.name + '</td>' + '<td>' + user.age + '</td>' + '<td>' + user.salary + '</td>' + '<td>' + user.city + '</td>' + '<td>' + '<button>' + 'X' + '</button>' + '</td>' + '</tr>' + '</tbody>'
       }
      return string + '<td>' + user.name + '</td>' + '<td>' + user.age + '</td>' + '<td>' + user.salary + '</td>' + '<td>' + user.city + '</td>' + '<td>' + '<button>' + 'X' + '</button>' + '</td>' + '</tr>'  
     }, this.tHead)
-    this.table.innerHTML = this.value
+    this.table.innerHTML = value
     return this.table
   }
 }
