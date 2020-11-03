@@ -4,15 +4,17 @@ export default class ProductCard {
   constructor(product) {
     this.product = product
     this.elem = this['createDomElement']()
-    this.elem.addEventListener('click', event => {
-      if (event.target.classList.contains('card__button')) {
-        let event = new CustomEvent('product-add', {
-          detail: this.product.id, 
-          bubbles: true
-        })
-        this.elem.dispatchEvent(event)
-      }
-    }) 
+    this.elem.addEventListener('click', event => this['onClick'](event))
+  }
+
+  onClick(event) {
+    if (event.target.classList.contains('card__button')) {
+      let event = new CustomEvent('product-add', {
+        detail: this.product.id, 
+        bubbles: true
+      })
+      this.elem.dispatchEvent(event)
+    }
   }
 
   createDomElement() {
