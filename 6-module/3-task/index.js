@@ -54,7 +54,6 @@ export default class Carousel {
        carouselInner.style.transform = `translateX(${this.position}px)`
     }
   }
-  
 
   createCarouselDom() {
     let carousel = document.createElement('div')
