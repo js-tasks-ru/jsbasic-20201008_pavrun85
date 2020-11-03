@@ -11,17 +11,13 @@ export default class Carousel {
     this.couruselArrowLeft = this.elem.querySelector('.carousel__arrow_left')
     if (this.position === 0) {
       this['hideArrowLeft']()
-    } else {
-      this.couruselArrowLeft.style.display = ''
     }
     // Скрытие правой стрелки переключения
     this.couruselArrowRight = this.elem.querySelector('.carousel__arrow_right') 
     let allSlides = this.elem.querySelectorAll('.carousel__slide')
     if (allSlides.length - 1) {
       this['hideArrowRight']()
-    } else {
-      this.couruselArrowRight.style.display = ''
-    }
+    } 
   }
 
   hideArrowRight() {
