@@ -18,34 +18,20 @@ export default class ProductCard {
   }
 
   createDomElement() {
-    let firstDiv = document.createElement('div')
-    firstDiv.className = 'card'
-      let secondDiv = document.createElement('div')
-      secondDiv.className = 'card__top'
-        let firstImage = document.createElement('img')
-        firstImage.src = `/assets/images/products/${this.product.image}`
-        firstImage.className = 'card__image'
-        firstImage.alt = 'product'
-      secondDiv.append(firstImage)
-        let span = document.createElement('span')
-        span.className = 'card__price'
-        span.textContent = `€${(this.product.price).toFixed(2)}`
-      secondDiv.append(span)
-    firstDiv.append(secondDiv)
-      let thirdDiv = document.createElement('div')
-      thirdDiv.className = 'card__body'
-        let fourthDiv = document.createElement('div')
-        fourthDiv.className = 'card__title'
-        fourthDiv.textContent = `${this.product.name}`
-      thirdDiv.append(fourthDiv)
-        let button = document.createElement('button')
-        button.className = 'card__button'
-          let secondImage = document.createElement('img')
-          secondImage.src = '/assets/images/icons/plus-icon.svg'
-          secondImage.alt = 'icon'
-        button.append(secondImage)
-      thirdDiv.append(button)
-    firstDiv.append(thirdDiv)
-    return firstDiv
+    let div = document.createElement('div')
+    div.className = 'card'
+    div.innerHTML = `
+      <div class="card__top">
+        <img src="/assets/images/products/${this.product.image}" class="card__image" alt="product">
+        <span class="card__price">€${(this.product.price).toFixed(2)}</span>
+      </div>
+      <div class="card__body">
+        <div class="card__title">${this.product.name}</div>
+        <button type="button" class="card__button">
+          <img src="/assets/images/icons/plus-icon.svg" alt="icon">
+        </button>
+      </div>
+    </div>`
+    return div
   }
 }
