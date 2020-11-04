@@ -12,8 +12,8 @@ export default class Carousel {
     if (this.position === 0) this['hideArrowLeft']()
     // Скрытие правой стрелки переключения
     this.couruselArrowRight = this.elem.querySelector('.carousel__arrow_right') 
-    let allSlides = this.elem.querySelectorAll('.carousel__slide')
-    if (allSlides.length - 1) this['hideArrowRight']()
+    this.allSlides = this.elem.querySelectorAll('.carousel__slide')
+    if (this.allSlides.length - 1) this['hideArrowRight']()
   }
 
   hideArrowRight() {
@@ -26,8 +26,7 @@ export default class Carousel {
 
   onClick(event) {
      // Обрабатываю событие при клике на кнопку и генерирую событие
-     let slides = this.elem.querySelectorAll('.carousel__slide')
-     for (let slide of slides) {
+     for (let slide of this.allSlides ) {
       if (event.target.classList.contains('carousel__button')) {
         let event = new CustomEvent('product-add', {
           detail: slide.dataset.id, 
