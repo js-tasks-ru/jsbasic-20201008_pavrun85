@@ -6,33 +6,33 @@ export default class Carousel {
     // Создаю карусель
     this.elem = this['createCarouselDom']()
     this.elem.addEventListener('click', event => this['onClick'](event))
-    this.position = 0
-    // Скрытие левой стрелки переключения
-    this.couruselArrowLeft = this.elem.querySelector('.carousel__arrow_left')
-    if (this.position === 0) this['hideArrowLeft']()
     // Скрытие правой стрелки переключения
-    this.couruselArrowRight = this.elem.querySelector('.carousel__arrow_right') 
     this.allSlides = this.elem.querySelectorAll('.carousel__slide')
-    if (this.allSlides.length - 1) this['hideArrowRight']()
-  }
-
-  hideArrowRight() {
-    this.couruselArrowRight.style.display = 'none'
-  }
-
-  hideArrowLeft() {
-    this.couruselArrowLeft.style.display = 'none'
+    let couruselArrowRight = this.elem.querySelector('.carousel__arrow_right')
+    if (this.allSlides.length - 1)  {
+      couruselArrowRight.style.display = 'none'
+    } else {
+      couruselArrowRight.style.display = ''
+    }
+    // Скрытие левой стрелки переключения
+    this.position = 0
+    let couruselArrowLeft = this.elem.querySelector('.carousel__arrow_left') 
+    if (this.position === 0) {
+      couruselArrowLeft.style.display = 'none'
+    } else {
+      couruselArrowLeft.style.display = ''
+    }
   }
 
   onClick(event) {
      // Обрабатываю событие при клике на кнопку и генерирую событие
      for (let slide of this.allSlides ) {
-      if (event.target.classList.contains('carousel__button')) {
+      if (event.target.tagName === 'BUTTON') {
         let event = new CustomEvent('product-add', {
           detail: slide.dataset.id, 
           bubbles: true
         })
-        this.elem.dispatchEvent(event)
+        slide.dispatchEvent(event)
       }
     }
      // Переключение слайдов
@@ -51,8 +51,6 @@ export default class Carousel {
     let carousel = document.createElement('div')
     carousel.className = 'carousel'
     carousel.innerHTML = `
-      <!--Корневой элемент карусели-->
-      <div class="carousel">
         <!--Кнопки переключения-->
         <div class="carousel__arrow carousel__arrow_right">
           <img src="/assets/images/icons/angle-icon.svg" alt="icon">
