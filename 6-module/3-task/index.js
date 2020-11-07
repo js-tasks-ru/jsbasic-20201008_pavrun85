@@ -7,9 +7,9 @@ export default class Carousel {
     this.elem = this['createCarouselDom']()
     this.elem.addEventListener('click', event => this['onClick'](event))
     // Скрытие правой стрелки переключения
-    this.allSlides = this.elem.querySelectorAll('.carousel__slide')
+    let allSlides = this.elem.querySelectorAll('.carousel__slide')
     let couruselArrowRight = this.elem.querySelector('.carousel__arrow_right')
-    if (this.allSlides.length - 1)  {
+    if (allSlides.length - 1)  {
       couruselArrowRight.style.display = 'none'
     } else {
       couruselArrowRight.style.display = ''
@@ -25,23 +25,23 @@ export default class Carousel {
   }
 
   onClick(event) {
-     // Обрабатываю событие при клике на кнопку и генерирую событие
-     for (let slide of this.allSlides ) {
-      if (event.target.tagName === 'BUTTON') {
-        let event = new CustomEvent('product-add', {
-          detail: slide.dataset.id, 
-          bubbles: true
+    // Генерация события при клике на кнопку
+    let target = event.target
+    if (target.tagName === 'BUTTON') {
+      let slide = target.closest('.carousel__slide')
+      let event = new CustomEvent('product-add', {
+        detail: slide.dataset.id, 
+        bubbles: true
         })
-        slide.dispatchEvent(event)
-      }
+      slide.dispatchEvent(event)
     }
      // Переключение слайдов
      let carouselInner = this.elem.querySelector('.carousel__inner')
      let width = carouselInner.offsetWidth
-     if (event.target.classList.contains('carousel__arrow_right')) {
+     if (target.classList.contains('carousel__arrow_right')) {
        this.position -= width
        carouselInner.style.transform = `translateX(${this.position}px)`
-     } else if (event.target.classList.contains('carousel__arrow_left')) {
+     } else if (target.classList.contains('carousel__arrow_left')) {
        this.position += width
        carouselInner.style.transform = `translateX(${this.position}px)`
     }
