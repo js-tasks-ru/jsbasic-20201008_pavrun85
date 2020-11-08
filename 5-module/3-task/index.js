@@ -1,10 +1,10 @@
 function initCarousel() {
   // ваш код...
-  let container = document.querySelector('.container')
-  let elem = document.querySelector('.carousel__inner')
-  let slides = document.querySelectorAll('.carousel__slide')
-  let couruselArrowLeft = document.querySelector('.carousel__arrow_left')
-  let couruselArrowRight = document.querySelector('.carousel__arrow_right')
+  let container = document.querySelector('[data-carousel-holder]')
+  let elem = container.querySelector('.carousel__inner')
+  let slides = container.querySelectorAll('.carousel__slide')
+  let couruselArrowLeft = container.querySelector('.carousel__arrow_left')
+  let couruselArrowRight = container.querySelector('.carousel__arrow_right')
   
   let width = elem.offsetWidth
   let position = 0
