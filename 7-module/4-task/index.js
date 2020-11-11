@@ -19,7 +19,6 @@ export default class StepSlider {
 
   pointerDown(event) {
      
-     
     let pointerMove = () => {
       let left = event.clientX - this.elem.getBoundingClientRect().left
       let leftRelative = left / this.elem.offsetWidth
